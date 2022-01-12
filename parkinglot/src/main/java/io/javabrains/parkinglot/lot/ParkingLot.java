@@ -12,11 +12,20 @@ public class ParkingLot {
     private ParkingAttendant parkingAttendant;
 
     public ParkingAttendant getParkingAttendant() {
+        parkingAttendant = new ParkingAttendant(getParkingSpaces(), getPaymentCounter());
+//        for(ParkingSpace p: parkingSpaces){
+//            if(p.getVehicle()==null){
+//                continue;
+//            }
+//            else
+//                parkingAttendant.spaces.add(p);
+//        }
+//        parkingAttendant.spaces = getParkingSpaces();
         return parkingAttendant;
     }
 
     public PaymentCounter getPaymentCounter() {
-        return paymentCounter;
+        return this.paymentCounter;
     }
 
     public List<ParkingSpace> getParkingSpaces() {
@@ -30,7 +39,16 @@ public class ParkingLot {
 
     @Override
     public String toString() {
-        return "";
+        String output = "";
+        for (ParkingSpace p : parkingSpaces) {
+
+            output+="("+p.getParkingSpaceType().name().charAt(0)+")";
+            if (p.getVehicle()!=null)
+                output+= "|__"+ p.getVehicle().getVehicleType()+"__|      ";
+            else
+                output+= "|______|      ";
+        }
+        return output;
     }
 
 

@@ -44,6 +44,8 @@ public class ParkingSpace {
 
 
     public boolean park(Vehicle vehicle) {
+        setVehicle(vehicle);
+
         return false;
     }
 

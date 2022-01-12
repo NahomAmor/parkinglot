@@ -9,10 +9,23 @@ public class PaymentCounter {
     }
 
     public void pay(int amount) {
+        totalCash += amount;
 
     }
 
     public int calculateCost(int minutes) {
-        return 0;
+        int amount = 0;
+        if (minutes > 1440){
+            amount = (minutes/1440) *500;
+            minutes -= 1440*(minutes/1440);
+        }
+
+        if (minutes<=180){
+            amount += minutes*2;
+        }else if (minutes<=(1440)){
+            amount += minutes;
+        }
+
+        return amount;
     }
 }
